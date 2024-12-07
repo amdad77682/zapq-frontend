@@ -1,0 +1,106 @@
+
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  background-color: var(--bg-default);
+  min-height: 100%;
+  font-size: 14px;
+  font-family: var(--font);
+  line-height: 1.5;
+  color: var(--text-primary);
+  scrollbar-width: thin;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+table {
+  thead {
+    th {
+      text-align: left;
+    }
+  }
+}
+
+.control-bar {
+  @apply bg-white p-4 flex justify-between;
+}
+
+.page-body {
+  @apply p-4;
+}
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+input[type='radio']:after {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  top: 0px;
+  left: 0px;
+  position: relative;
+  background-color: #201f25;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid #63626a;
+}
+
+input[type='radio']:checked:after {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  top: 0px;
+  left: 0px;
+  position: relative;
+  background-color: #63626a;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+.active-icon {
+  svg * {
+    fill: #1cab55;
+    stroke: #1cab55;
+
+    path * {
+      stroke: #1cab55;
+    }
+
+    rect {
+      stroke: #1cab55;
+    }
+  }
+}
+@keyframes gradientAnim {
+  0% {
+    background-position: 100% 50%;
+  }
+  80% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
