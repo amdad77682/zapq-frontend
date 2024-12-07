@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { IoClose } from 'react-icons/io5';
-import { MdEdit } from 'react-icons/md';
+import React, { useState, useRef } from "react";
+import { IoClose } from "react-icons/io5";
+import { MdEdit } from "react-icons/md";
 
 interface OptionInputFieldProps {
   label: string;
@@ -17,7 +17,7 @@ interface OptionInputFieldProps {
 const OptionInputField: React.FC<OptionInputFieldProps> = ({
   label,
   name,
-  type = 'text',
+  type = "text",
   value,
   onChange,
   style,
@@ -27,7 +27,7 @@ const OptionInputField: React.FC<OptionInputFieldProps> = ({
 }) => {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [currentFeedback, setCurrentFeedback] = useState(feedbackText || '');
+  const [currentFeedback, setCurrentFeedback] = useState(feedbackText || "");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
@@ -59,18 +59,18 @@ const OptionInputField: React.FC<OptionInputFieldProps> = ({
   const handleRemoveImage = () => {
     setUploadedImage(null);
     if (fileInputRef.current) {
-      fileInputRef.current.value = '';
+      fileInputRef.current.value = "";
     }
   };
 
   return (
-    <div className={`relative w-full ${style?.style || ''}`}>
+    <div className={`relative w-full ${style?.style || ""}`}>
       <div
         className={`peer w-full bg-transparent font-sans font-base outline outline-0 
           transition-all placeholder-shown:border 
           border border-[#E5E7EB] text-black text-sm px-3 py-2.5 rounded-[7px]
           flex flex-col ${
-            disabled ? 'cursor-not-allowed text-gray-500 border-[#E5E7EB]' : ''
+            disabled ? "cursor-not-allowed text-gray-500 border-[#E5E7EB]" : ""
           }`}
       >
         {/* Uploaded Image */}
@@ -107,7 +107,7 @@ const OptionInputField: React.FC<OptionInputFieldProps> = ({
             truncate text-[11px] text-[#6B7280] leading-tight -top-1.5 before:content[' '] before:block before:box-border 
             before:mt-[6.5px] before:mr-1 before:rounded-tl-md before:pointer-events-none before:border-[#E5E7EB] after:content[' '] after:w-3 after:-h-1
             after:flex-grow after:box-border after:mt-[6.5px] after:ml-1 after:border-[#E5E7EB] after:border-t after:rounded-tr-md after:mr-3
-            ${disabled ? 'text-gray-500' : 'text-[#6B7280]'}`}
+            ${disabled ? "text-gray-500" : "text-[#6B7280]"}`}
         >
           {label}
         </label>
@@ -126,12 +126,12 @@ const OptionInputField: React.FC<OptionInputFieldProps> = ({
           {/* Image and Text Options */}
           <div className="flex items-center gap-2 ml-2">
             <img
-              src="https://cdn.10minuteschool.com/images/katex-icon_1723629558948.svg"
+              src="https://placehold.co/600x400.png"
               alt="katex-icon"
               className="cursor-pointer"
             />
             <img
-              src="https://cdn.10minuteschool.com/images/add-image-icon_1723630213131.svg"
+              src="https://placehold.co/600x400.png"
               alt="image-add-icon"
               className="cursor-pointer"
               onClick={handleImageIconClick}
@@ -143,7 +143,7 @@ const OptionInputField: React.FC<OptionInputFieldProps> = ({
         {feedbackEnabled && (
           <div
             className={`-mx-3 -my-2.5 mt-2 px-3 py-2.5 text-sm text-gray-600 rounded-b-md border-t border-[#E5E7EB] ${
-              currentFeedback.length > 0 ? 'bg-[#F5F9FF]' : 'bg-white'
+              currentFeedback.length > 0 ? "bg-[#F5F9FF]" : "bg-white"
             }`}
           >
             <input
@@ -162,7 +162,7 @@ const OptionInputField: React.FC<OptionInputFieldProps> = ({
         ref={fileInputRef}
         type="file"
         accept="image/*"
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         onChange={handleImageUpload}
       />
     </div>

@@ -6,13 +6,13 @@ module.exports = {
   reactStrictMode: true,
   assetPrefix: process?.env?.NEXT_PUBLIC_ASSET_CDN ?? undefined,
   images: {
-    domains: ['cdn.10minuteschool.com', 'via.placeholder.com'],
+    domains: ["placehold.co", "via.placeholder.com"],
   },
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/selection',
+        source: "/",
+        destination: "/selection",
         permanent: true,
       },
     ];

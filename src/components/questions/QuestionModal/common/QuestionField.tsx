@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
-import { IoClose } from 'react-icons/io5';
+import React, { useState, useRef } from "react";
+import { IoClose } from "react-icons/io5";
 
 const QuestionField = ({
   label,
   name,
-  type = 'text',
+  type = "text",
   value,
   onChange,
   style,
@@ -47,12 +47,12 @@ const QuestionField = ({
   const handleRemoveImage = () => {
     setUploadedImage(null);
     if (fileInputRef.current) {
-      fileInputRef.current.value = '';
+      fileInputRef.current.value = "";
     }
   };
 
   return (
-    <div className={`relative w-full ${style?.style || ''}`}>
+    <div className={`relative w-full ${style?.style || ""}`}>
       <input
         name={name}
         type={type}
@@ -61,7 +61,7 @@ const QuestionField = ({
           placeholder-shown:border-[#E5E7EB] placeholder-shown:border-t-[#E5E7EB] border 
           border-[#E5E7EB] text-black text-sm px-3 py-2.5 rounded-[7px] border-t-transparent
           ${
-            disabled ? 'cursor-not-allowed text-gray-500 border-[#E5E7EB]' : ''
+            disabled ? "cursor-not-allowed text-gray-500 border-[#E5E7EB]" : ""
           }`}
         placeholder=" "
         value={value}
@@ -81,8 +81,8 @@ const QuestionField = ({
           after:rounded-tr-md after:border-t peer-focus:after:border-t-1 after:border-r peer-focus:after:border-r-1 after:pointer-events-none after:transition-all 
           peer-placeholder-shown:leading-[3.75] ${
             disabled
-              ? 'text-gray-500'
-              : 'before:border-[#E5E7EB] after:border-[#E5E7EB]'
+              ? "text-gray-500"
+              : "before:border-[#E5E7EB] after:border-[#E5E7EB]"
           }`}
       >
         {label}
@@ -92,7 +92,7 @@ const QuestionField = ({
       <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-3">
         {/* Display Uploaded Image */}
         <img
-          src="https://cdn.10minuteschool.com/images/katex-icon_1723629558948.svg"
+          src="https://placehold.co/600x400.png"
           alt="katex-icon"
           className="cursor-pointer"
         />
@@ -113,7 +113,7 @@ const QuestionField = ({
         ) : (
           <>
             <img
-              src="https://cdn.10minuteschool.com/images/add-image-icon_1723630213131.svg"
+              src="https://placehold.co/600x400.png"
               alt="image-add-icon"
               className="cursor-pointer"
               onClick={handleImageIconClick}
@@ -127,7 +127,7 @@ const QuestionField = ({
         ref={fileInputRef}
         type="file"
         accept="image/*"
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         onChange={handleImageUpload}
       />
     </div>

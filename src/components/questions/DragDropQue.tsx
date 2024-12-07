@@ -1,12 +1,11 @@
-import { useState, DragEvent } from 'react';
-import Image from 'next/image';
-import { ICONS } from '@components/xyflow/utils/helper';
-import Button from '@components/common/Form/Button';
-import { Option } from '@components/common/models';
-import { Handle, NodeProps, Position } from '@xyflow/react';
-import useGlobalStore from '@components/Layouts/lesson-game/store';
-import { MODE } from '@utils/helper';
-
+import { useState, DragEvent } from "react";
+import Image from "next/image";
+import { ICONS } from "@components/xyflow/utils/helper";
+import Button from "@components/common/Form/Button";
+import { Option } from "@components/common/models";
+import { Handle, NodeProps, Position } from "@xyflow/react";
+import useGlobalStore from "@components/Layouts/lesson-game/store";
+import { MODE } from "@utils/helper";
 
 function DragDropQue({ data, isConnectable }: NodeProps) {
   const { mode } = useGlobalStore();
@@ -14,22 +13,20 @@ function DragDropQue({ data, isConnectable }: NodeProps) {
 
   const [options] = useState<Option[]>([
     {
-      id: '1',
-      image:
-        'https://cdn.10minuteschool.com/images/option_one_1723532711155.svg',
-      label: 'Option 1',
+      id: "1",
+      image: "https://placehold.co/600x400.png",
+      label: "Option 1",
     },
     {
-      id: '2',
-      image:
-        'https://cdn.10minuteschool.com/images/option_one_1723532711155.svg',
-      label: 'Option 2',
+      id: "2",
+      image: "https://placehold.co/600x400.png",
+      label: "Option 2",
     },
   ]);
   const [draggedOption, setDraggedOption] = useState<Option | null>(null);
 
   const handleDragStart = (e: DragEvent<HTMLDivElement>, option: Option) => {
-    e.dataTransfer.setData('text/plain', option.id);
+    e.dataTransfer.setData("text/plain", option.id);
     setDraggedOption(option);
   };
 
@@ -39,7 +36,7 @@ function DragDropQue({ data, isConnectable }: NodeProps) {
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    const optionId = e.dataTransfer.getData('text/plain');
+    const optionId = e.dataTransfer.getData("text/plain");
     const droppedOption = options.find((option) => option.id === optionId);
     if (droppedOption) {
       setDraggedOption(droppedOption);
@@ -70,7 +67,7 @@ function DragDropQue({ data, isConnectable }: NodeProps) {
                     id={handleId}
                     position={Position.Right}
                     isConnectable={isConnectable}
-                    style={{ top: '50%' }}
+                    style={{ top: "50%" }}
                   />
                 </div>
               );
@@ -142,7 +139,7 @@ function DragDropQue({ data, isConnectable }: NodeProps) {
               className="mx-auto flex justify-center items-end w-[130px] h-[130px] border border-[#9CA3AF]
               shadow-[0px_3px_0px_0px_#8E9196_inset] rounded-[10px] border-solid bg-[#E5E7EB] p-2 text-[#6B7280]"
             >
-              {draggedOption ? draggedOption.label : 'Answer'}
+              {draggedOption ? draggedOption.label : "Answer"}
             </div>
 
             {/* Draggable Options */}

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import QuestionField from './common/QuestionField';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { Switch } from '../../ui/switch';
-import { Checkbox } from './common/CheckBox';
-import OverallFeedback from './common/OverallFeedback';
-import QuestionHintExplanations from './common/QuestionHintExplanations';
-import Button from '@components/common/Form/Button';
-import OptionInputField from './common/OptionInputField';
+import React, { useState } from "react";
+import QuestionField from "./common/QuestionField";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { Switch } from "../../ui/switch";
+import { Checkbox } from "./common/CheckBox";
+import OverallFeedback from "./common/OverallFeedback";
+import QuestionHintExplanations from "./common/QuestionHintExplanations";
+import Button from "@components/common/Form/Button";
+import OptionInputField from "./common/OptionInputField";
 
 type FormValues = {
   question: string;
@@ -21,25 +21,25 @@ export default function McqQuestionForm() {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log('Form Data:', data);
+    console.log("Form Data:", data);
   };
 
   const [options, setOptions] = useState([
     {
-      name: 'firstOption',
-      label: '১ম অপশন',
+      name: "firstOption",
+      label: "১ম অপশন",
     },
     {
-      name: 'secondOption',
-      label: '২য় অপশন',
+      name: "secondOption",
+      label: "২য় অপশন",
     },
     {
-      name: 'thirdOption',
-      label: '৩য় অপশন',
+      name: "thirdOption",
+      label: "৩য় অপশন",
     },
     {
-      name: 'fourthOption',
-      label: '৪র্থ অপশন',
+      name: "fourthOption",
+      label: "৪র্থ অপশন",
     },
   ]);
 
@@ -51,10 +51,10 @@ export default function McqQuestionForm() {
         <Controller
           name="question"
           control={control}
-          rules={{ required: 'Question is required.' }}
+          rules={{ required: "Question is required." }}
           render={({ field: { onChange, value } }) => (
             <QuestionField
-              label={'প্রশ্ন'}
+              label={"প্রশ্ন"}
               onChange={onChange}
               name="question"
               value={value}
@@ -86,7 +86,7 @@ export default function McqQuestionForm() {
               <div key={option.name} className="flex items-center gap-3">
                 <button type="button">
                   <img
-                    src="https://cdn.10minuteschool.com/images/trash_1723632077839.svg"
+                    src="https://placehold.co/600x400.png"
                     alt="trash-icon"
                   />
                 </button>
@@ -98,10 +98,10 @@ export default function McqQuestionForm() {
                     <OptionInputField
                       label={option.label}
                       name={option.name}
-                      value={value}
+                      value={value as string}
                       onChange={onChange}
                       feedbackEnabled={!isFeedbackEnabled}
-                      feedbackText={option.feedbackText}
+                      // feedbackText={option.feedbackText as string}
                     />
                   )}
                 />

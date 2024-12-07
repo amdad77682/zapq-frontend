@@ -1,96 +1,96 @@
-'use client';
-import { ToggleState } from '@components/common/ToggelState';
-import { ICONS } from '@components/xyflow/utils/helper';
-import { nodesType } from '@components/xyflow/utils/nodesType';
-import useStore from '@components/xyflow/utils/store';
-import Image from 'next/image';
-import React from 'react';
-import useGlobalStore from '../lesson-game/store';
-import TOASTER from '@components/common/Toaster';
+"use client";
+import { ToggleState } from "@components/common/ToggelState";
+import { ICONS } from "@components/xyflow/utils/helper";
+import { nodesType } from "@components/xyflow/utils/nodesType";
+import useStore from "@components/xyflow/utils/store";
+import Image from "next/image";
+import React from "react";
+import useGlobalStore from "../lesson-game/store";
+import TOASTER from "@components/common/Toaster";
 
 const BASIC = [
   {
-    name: 'Start Page',
-    icon: 'https://cdn.10minuteschool.com/images/video-square_1723358058910.png',
-    nodeType: 'basic_StartPage',
+    name: "Start Page",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "basic_StartPage",
     description:
-      'Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.',
+      "Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.",
   },
   {
-    name: 'Prompt Page',
-    icon: 'https://cdn.10minuteschool.com/images/comment-2-text_1723364043848.png',
-    nodeType: 'basic_PromptPage',
+    name: "Prompt Page",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "basic_PromptPage",
     description:
-      'Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.',
+      "Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.",
   },
   {
-    name: 'Login Page',
-    icon: 'https://cdn.10minuteschool.com/images/login_1724923294319.png',
-    nodeType: 'basic_LoginPage',
+    name: "Login Page",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "basic_LoginPage",
     description:
-      'Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.',
+      "Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.",
   },
   {
-    name: 'Result Page',
-    icon: 'https://cdn.10minuteschool.com/images/presention-chart_1724923400080.png',
-    nodeType: 'basic_ResultPage',
+    name: "Result Page",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "basic_ResultPage",
     description:
-      'Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.',
+      "Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.",
   },
   //End page
   {
-    name: 'End Page',
-    icon: 'https://cdn.10minuteschool.com/images/stop-circle_1724923456764.png',
-    nodeType: 'basic_EndPage',
+    name: "End Page",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "basic_EndPage",
     description:
-      'Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.',
+      "Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.",
   },
   //Rating
   {
-    name: 'Rating',
-    icon: 'https://cdn.10minuteschool.com/images/star_1724923509031.png',
-    nodeType: 'basic_RatingPage',
+    name: "Rating",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "basic_RatingPage",
     description:
-      'Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.',
+      "Start page shows the introduction of the game the user is about to play, such as the game title, description, etc.",
   },
 ];
 
 const QUESTION = [
   //binary answer
   {
-    name: 'Binary Answer',
-    icon: 'https://cdn.10minuteschool.com/images/task-square_1724923598505.png',
-    nodeType: 'question_BinaryAnswer',
+    name: "Binary Answer",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "question_BinaryAnswer",
   },
   //MCQ
   {
-    name: 'MCQ',
-    icon: 'https://cdn.10minuteschool.com/images/message-question_1724923713259.png',
-    nodeType: 'question_MCQ',
+    name: "MCQ",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "question_MCQ",
   },
   //Drag and Drop
   {
-    name: 'Drag and Drop',
-    icon: 'https://cdn.10minuteschool.com/images/copy_1724923761625.png',
-    nodeType: 'question_DragAndDrop',
+    name: "Drag and Drop",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "question_DragAndDrop",
   },
   //text input
   {
-    name: 'Text Input',
-    icon: 'https://cdn.10minuteschool.com/images/text-block_1724925060529.png',
-    nodeType: 'question_TextInput',
+    name: "Text Input",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "question_TextInput",
   },
   //fill in the blank
   {
-    name: 'Fill in the blank',
-    icon: 'https://cdn.10minuteschool.com/images/received_1724925108331.png',
-    nodeType: 'question_FillInTheBlank',
+    name: "Fill in the blank",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "question_FillInTheBlank",
   },
   //multiple questions
   {
-    name: 'Multiple Questions',
-    icon: 'https://cdn.10minuteschool.com/images/clipboard-text_1724925171065.png',
-    nodeType: 'question_MultipleQuestions',
+    name: "Multiple Questions",
+    icon: "https://placehold.co/200x200.png",
+    nodeType: "question_MultipleQuestions",
   },
 ];
 
@@ -108,12 +108,12 @@ export default function Sidebar() {
     <li
       key={index}
       className={`flex flex-col items-center justify-between gap-2 p-6 border-b hover:bg-slate-100 cursor-pointer
-              ${index % 2 === 0 ? 'border-r' : ''}`}
+              ${index % 2 === 0 ? "border-r" : ""}`}
       onClick={() => {
-        if (mode === 'branching') {
+        if (mode === "branching") {
           TOASTER.failed({
-            title: 'Failed',
-            message: 'You cannot add a node in branching mode',
+            title: "Failed",
+            message: "You cannot add a node in branching mode",
           });
           return;
         }

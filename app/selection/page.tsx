@@ -1,11 +1,19 @@
-'use client';
-
-import Sidebar from '@components/Layouts/common/Sidebar';
-import { Dialog } from '@components/common/Dialog';
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+import { v4 as uuidv4 } from "uuid";
+import Sidebar from "@components/Layouts/common/Sidebar";
+import { Dialog } from "@components/common/Dialog";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import useFireStore from "src/hooks/useFireStore";
 
 export default function Page() {
+  const router = useRouter();
+  const { writeMessage } = useFireStore();
+  const onSelectProcess = (type: string, data = {}, url: string) => {
+    const id = uuidv4();
+    writeMessage(`${type}/${id}`, JSON.stringify(data));
+    router.push(`${url}/${id}`);
+  };
   return (
     <div className="flex mt-1 ">
       <Sidebar />
@@ -21,32 +29,38 @@ export default function Page() {
             <div className="grid grid-cols-3 gap-4 py-4">
               {[
                 {
-                  title: 'Lesson Game',
-                  desc: 'Teach a topic to students by crafting original stories and characters',
-                  icon: 'https://cdn.10minuteschool.com/images/arrow-square_1724062947549.png',
-                  url: '/lesson-game',
+                  title: "MicroSurvey Builder",
+                  desc: "Form create, share to the user get analytics",
+                  icon: "https://placehold.co/600x800.png",
+                  url: "/microsurvey",
+                  type: "microsurvey",
                 },
                 {
-                  title: 'Assessment',
-                  desc: 'Assess a student’s understanding of a subject topic',
-                  icon: 'https://cdn.10minuteschool.com/images/arrow-square_1724062947549.png',
-                  url: '/lesson-game',
+                  title: "Quiz Fight",
+                  desc: "Assess a student’s understanding of a subject topic",
+                  icon: "https://placehold.co/600x800.png",
+                  url: "/quiz-fight",
+                  type: "quiz",
                 },
                 {
-                  title: 'Learning Journey',
-                  desc: 'Teach a course to students by creating a learning pathway',
-                  icon: 'https://cdn.10minuteschool.com/images/Group_2085663245_1724064223793.png',
-                  url: '/lesson-game',
+                  title: "Exam",
+                  desc: "Teach a course to students by creating a learning pathway",
+                  icon: "https://placehold.co/600x800.png",
+                  url: "/exam",
+                  type: "exam",
                 },
               ].map((item) => {
                 return (
-                  <Link key={item?.title} href={item?.url}>
+                  <button
+                    onClick={() => onSelectProcess(item?.type, {}, item?.url)}
+                    key={item?.title}
+                  >
                     <div className="border p-4 rounded-md flex flex-col items-center justify-center hover:bg-[#306BF4] hover:text-white">
                       <Image
                         alt={item?.title}
                         src={item?.icon}
-                        height={69}
-                        width={68}
+                        height={800}
+                        width={600}
                         className="hover:text-white"
                       />
                       <h2 className="font-semibold py-3 text-center hover:text-white">
@@ -56,7 +70,7 @@ export default function Page() {
                         {item?.desc}
                       </p>
                     </div>
-                  </Link>
+                  </button>
                 );
               })}
             </div>

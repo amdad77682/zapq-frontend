@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import QuestionField from './common/QuestionField';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { Switch } from '../../ui/switch';
-import { Checkbox } from './common/CheckBox';
-import OverallFeedback from './common/OverallFeedback';
-import QuestionHintExplanations from './common/QuestionHintExplanations';
-import Button from '@components/common/Form/Button';
-import OptionInputField from './common/OptionInputField';
-import TextInputField from './common/TextInputField';
+import Button from "@components/common/Form/Button";
+import { useState } from "react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import OverallFeedback from "./common/OverallFeedback";
+import QuestionField from "./common/QuestionField";
+import QuestionHintExplanations from "./common/QuestionHintExplanations";
+import TextInputField from "./common/TextInputField";
 
 type FormValues = {
   question: string;
@@ -18,17 +15,17 @@ export default function TextInputQuestionForm() {
   const { handleSubmit, control } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log('Form Data:', data);
+    console.log("Form Data:", data);
   };
 
   const [options, setOptions] = useState([
     {
-      name: 'firstOption',
-      label: '১ম অপশন',
+      name: "firstOption",
+      label: "১ম অপশন",
     },
     {
-      name: 'secondOption',
-      label: '২য় অপশন',
+      name: "secondOption",
+      label: "২য় অপশন",
     },
   ]);
 
@@ -40,10 +37,10 @@ export default function TextInputQuestionForm() {
         <Controller
           name="question"
           control={control}
-          rules={{ required: 'Question is required.' }}
+          rules={{ required: "Question is required." }}
           render={({ field: { onChange, value } }) => (
             <QuestionField
-              label={'প্রশ্ন'}
+              label={"প্রশ্ন"}
               onChange={onChange}
               name="question"
               value={value}
@@ -66,7 +63,7 @@ export default function TextInputQuestionForm() {
               <div key={option.name} className="flex items-center gap-3">
                 <button type="button">
                   <img
-                    src="https://cdn.10minuteschool.com/images/trash_1723632077839.svg"
+                    src="https://placehold.co/600x400.png"
                     alt="trash-icon"
                   />
                 </button>
@@ -78,7 +75,7 @@ export default function TextInputQuestionForm() {
                     <TextInputField
                       label={option.label}
                       name={option.name}
-                      value={value}
+                      value={value as string}
                       onChange={onChange}
                     />
                   )}
